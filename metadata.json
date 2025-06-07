@@ -1,0 +1,5 @@
+{
+  "name": "HR Analytics Dashboard",
+  "description": "A dashboard to analyze employee, training, and performance data, with AI-powered feedback analysis using Gemini.",
+  "requestFramePermissions": []
+}
