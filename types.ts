@@ -1,38 +1,42 @@
+// src/types.ts
+
+// --- Tipos Principais Baseados nas Suas Planilhas ---
 
 export interface Funcionario {
   employee_id: string;
   name: string;
   department: string;
   position: string;
-  hire_date: string; 
+  hire_date: string;
+  last_training_dat: string;
+  total_training_hours: number;
 }
 
 export enum TrainingStatus {
-  PLANEJADO = "Planejado",
-  EM_ANDAMENTO = "Em Andamento",
   CONCLUIDO = "Concluído",
+  EM_ANDAMENTO = "Em Andamento",
+  AGENDADO = "Agendado",
   CANCELADO = "Cancelado",
+  REPROVADO = "Reprovado",
 }
 
 export interface Treinamento {
-  training_id: string; 
+  training_id: string;
   training_name: string;
   category: string;
   duration_hours: number;
   cost: number;
   provider: string;
-  training_date: string; // Data de início do treinamento
+  training_date: string;
   status: TrainingStatus;
-  target_audience: string; // Ex: "Engenharia", "Marketing", "Todos", "Liderança"
-  number_of_participants?: number; // Real
-  max_participants?: number; // Planejado
-  satisfaction_score?: number; // Ex: 0-5 ou 0-10, opcional
-  effectiveness_notes?: string; // Observações qualitativas
-  prerequisites?: string[]; // Lista de IDs de treinamentos pré-requisitos ou descrições
+  target_audience: string;
+  number_of_participants?: number;
+  max_participants?: number;
+  effectiveness_notes: string;
+  prerequisites: string[];
 }
 
 export interface PerformanceMetric {
-  performance_id: string; 
   employee_id: string;
   metric_type: string;
   metric_value: number;
@@ -41,25 +45,22 @@ export interface PerformanceMetric {
   feedback: string;
 }
 
-export interface NavItem {
-  name: string;
-  path: string;
-  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactNode;
+export interface Enrollment {
+  enrollment_id: string;
+  employee_id: string;
+  training_id: string;
+  enrollment_date: string;
+  completion_status: string;
+  date_obtained: string;
+  score: string;
 }
 
-// For chart data
-export interface ChartDataItem {
-  name: string;
-  value: number;
-  fill?: string; // Optional: for custom colors in charts directly with data
-}
+// --- Tipos Auxiliares para a UI ---
 
 export interface KPIData {
   title: string;
   value: string | number;
-  icon?: (props: React.SVGProps<SVGSVGElement>) => React.ReactNode;
-  bgColorClass?: string;
-  textColorClass?: string;
-  change?: string; // e.g. "+5%"
-  changeType?: 'positive' | 'negative' | 'neutral';
+  icon: React.ElementType;
+  bgColorClass: string;
+  textColorClass: string;
 }
